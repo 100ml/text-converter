@@ -1,4 +1,4 @@
-import anno.Header;
+import anno.EnableHeader;
 import anno.Strategy;
 
 import javax.annotation.Nonnull;
@@ -9,7 +9,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class CSVUtil<T> {
     private Class tClass;
-    private Header header;
+    private EnableHeader header;
 
     @Nonnull
     public List<T> convert(@Nonnull String csvStr) {
@@ -45,9 +45,9 @@ public class CSVUtil<T> {
         checkNotNull(header, "annotation should be present on type parameter class");
     }
 
-    private Header getHeaderAnnotation(Class<T> tClass) {
-        if (tClass.isAnnotationPresent(Header.class)) {
-            return tClass.getClass().getAnnotation(Header.class);
+    private EnableHeader getHeaderAnnotation(Class<T> tClass) {
+        if (tClass.isAnnotationPresent(EnableHeader.class)) {
+            return tClass.getClass().getAnnotation(EnableHeader.class);
         } else return null;
     }
 }
