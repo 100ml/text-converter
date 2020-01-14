@@ -13,7 +13,7 @@ public @interface Field {
      * Header name with default value of field name if headers are needed.
      * @return
      */
-    String headerName() default "";
+    String name() default "";
 
     /**
      * Field converter.

@@ -1,14 +1,8 @@
 package converter;
 
-import java.util.function.Function;
+public interface FieldConverter<T> {
 
-public class FieldConverter {
+    String toString(T t);
 
-    public  <T> String toString(T t, Function<T, String> function) {
-        return function.apply(t);
-    }
-
-    public <T> T toObject(String str, Function<String, T> function) {
-        return function.apply(str);
-    }
+    T toObject(String str);
 }
