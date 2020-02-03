@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
+import static util.StringUtil.capitalize;
 
 //@Builder
 public class TextConverter {
@@ -92,10 +93,5 @@ public class TextConverter {
 
     public TextConverter(Class clazz) {
         this.clazz = clazz;
-    }
-
-    @Nonnull
-    private String capitalize(@Nonnull String str) {
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 }
