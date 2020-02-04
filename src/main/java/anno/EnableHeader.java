@@ -12,5 +12,5 @@ public @interface EnableHeader {
      */
     boolean value() default true;
 
-    Strategy strategy() default Strategy.ORDER;
+    Strategy strategy() default Strategy.ORDINAL;
 }

@@ -1,5 +1,3 @@
-import anno.EnableHeader;
-import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import converter.FieldConverter;
 
@@ -12,43 +10,20 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 import static util.StringUtil.capitalize;
 
-//@Builder
-public class TextConverter {
-
-    private Class clazz;
-    private String columnSplitSymbol = ",";
-    private String lineSplitSymbol = "\t";
+public class Reverser<T> extends TextHandler<T> {
 
     @Nonnull
-    public <T> List<T> convert(@Nonnull String csvStr) {
-        return null;
-    }
+    public String reverse(@Nonnull List<T> list) {
 
-    public String reverse(@Nonnull List<Object> list) {
         List<String> content = Lists.newArrayList();
         if (isHeaderEnabled(this.clazz)) content.add(genHeader(this.clazz));
         List<String> rows = list.stream().map(x -> genRow(x)).collect(toList());
         content.addAll(rows);
         return content.stream().collect(Collectors.joining(this.lineSplitSymbol));
-    }
-
-    private String genHeader(Class tClass) {
-        Field[] fields = tClass.getDeclaredFields();
-        return Stream.of(fields).map(this::getHeader).collect(joining(","));
-    }
-
-    private String getHeader(Field field) {
-        String header;
-        anno.Field field1 = field.getAnnotation(anno.Field.class);
-        if (field1 != null && !Strings.isNullOrEmpty(field1.name())) {
-            header = field1.name();
-        } else {
-            header = field.getName();
-        }
-        return header;
     }
 
     private String genRow(Object object) {
@@ -81,17 +56,7 @@ public class TextConverter {
         return field1.converter();
     }
 
-    private Boolean isHeaderEnabled(Class tClass) {
-        if (tClass.isAnnotationPresent(EnableHeader.class)) {
-            EnableHeader enableHeader = (EnableHeader)tClass.getAnnotation(EnableHeader.class);
-            return enableHeader.value();
-        } else {
-            //TODO is there any better way?
-            return false;
-        }
-    }
-
-    public TextConverter(Class clazz) {
-        this.clazz = clazz;
+    public Reverser(Class<T> tClass) {
+        this.clazz = tClass;
     }
 }
