@@ -1,6 +1,6 @@
-package converter;
+package parser;
 
-public class DoubleConverter implements FieldConverter<Double> {
+public class DoubleParser implements FieldParser<Double> {
     @Override
     public String toString(Double aDouble) {
         return aDouble.toString();

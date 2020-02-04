@@ -1,6 +1,6 @@
 package anno;
 
-import converter.FieldConverter;
+import parser.FieldParser;
 
 import java.lang.annotation.*;
 
@@ -19,5 +19,5 @@ public @interface Field {
      * Field converter.
      * @return
      */
-    Class<? extends FieldConverter> converter() default FieldConverter.class;
+    Class<? extends FieldParser> parser() default FieldParser.class;
 }

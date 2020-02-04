@@ -11,8 +11,10 @@ import static org.junit.Assert.assertTrue;
 
 public class ConverterTest {
 
+    private final String columnSymbol = " ";
+
     @Test
-    public void convert() {
+    public void convert() throws Exception {
         People people = new People();
         Car car = new Car();
         car.setColor("green");
@@ -20,9 +22,14 @@ public class ConverterTest {
         people.setCar(car);
         people.setSex(Sex.Male);
         people.setName("张三");
-        String text = new Reverser<>(People.class).reverse(Lists.newArrayList(people));
 
-        List<People> list = new Converter<>(People.class).convert(text);
+        Reverser reverser = new Reverser<>(People.class);
+        reverser.setColumnSplitSymbol(columnSymbol);
+        String text = reverser.reverse(Lists.newArrayList(people));
+        System.out.println(text);
+        Converter converter = new Converter<>(People.class);
+        converter.setColumnSplitSymbol(columnSymbol);
+        List<People> list = converter.convert(text);
         assertNotNull(list);
         assertTrue(list.size() == 1);
     }

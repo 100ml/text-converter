@@ -1,6 +1,6 @@
-package converter;
+package parser;
 
-public class StringConverter implements FieldConverter<String> {
+public class StringParser implements FieldParser<String> {
 
     @Override
     public String toString(String s) {

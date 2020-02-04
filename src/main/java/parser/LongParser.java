@@ -1,6 +1,6 @@
-package converter;
+package parser;
 
-public class LongConverter implements FieldConverter<Long> {
+public class LongParser implements FieldParser<Long> {
     @Override
     public String toString(Long aLong) {
         return aLong.toString();

@@ -1,6 +1,6 @@
-package converter;
+package parser;
 
-public class IntegerConverter implements FieldConverter<Integer> {
+public class IntegerParser implements FieldParser<Integer> {
     @Override
     public String toString(Integer integer) {
         return integer.toString();

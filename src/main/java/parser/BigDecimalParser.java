@@ -1,8 +1,8 @@
-package converter;
+package parser;
 
 import java.math.BigDecimal;
 
-public class BigDecimalConverter implements FieldConverter<BigDecimal> {
+public class BigDecimalParser implements FieldParser<BigDecimal> {
     @Override
     public String toString(BigDecimal bigDecimal) {
         return bigDecimal.toPlainString();

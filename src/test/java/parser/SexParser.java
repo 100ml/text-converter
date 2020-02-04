@@ -1,8 +1,8 @@
-package converter;
+package parser;
 
 import pojo.Sex;
 
-public class SexConverter implements FieldConverter<Sex> {
+public class SexParser implements FieldParser<Sex> {
     @Override
     public String toString(Sex sex) {
         return sex.name();

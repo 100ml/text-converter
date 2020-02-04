@@ -1,6 +1,6 @@
-package converter;
+package parser;
 
-public interface FieldConverter<T> {
+public interface FieldParser<T> {
 
     String toString(T t);
 

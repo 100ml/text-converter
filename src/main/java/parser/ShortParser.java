@@ -1,6 +1,6 @@
-package converter;
+package parser;
 
-public class ShortConverter implements FieldConverter<Short> {
+public class ShortParser implements FieldParser<Short> {
     @Override
     public String toString(Short aShort) {
         return aShort.toString();
