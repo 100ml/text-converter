@@ -7,7 +7,7 @@ import pojo.Sex;
 public class ReverserTest {
 
     @Test
-    public void reverse() {
+    public void reverse() throws Exception {
         People people = new People();
         Car car = new Car();
         car.setColor("green");
